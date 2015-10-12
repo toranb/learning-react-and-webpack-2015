@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-var Home = React.createClass({
-    render: function() {
+class Home extends React.Component {
+    render() {
         return (
             <div>
             <ul>
@@ -10,6 +10,6 @@ var Home = React.createClass({
             </ul>
         </div>);
     }
-});
+};
 
 export default Home;

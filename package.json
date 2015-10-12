@@ -17,7 +17,8 @@
     "eslint": "1.4.3",
     "eslint-loader": "1.0.0",
     "eslint-plugin-react": "3.4.1",
-    "react": "0.13.3",
+    "react": "0.14.0",
+    "react-dom": "^0.14.0",
     "watch": "0.16.0",
     "webpack": "1.12.2",
     "webpack-dev-server": "1.11.0"
