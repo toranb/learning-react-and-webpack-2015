@@ -33,7 +33,7 @@
   "rules": {
     "block-scoped-var": 2,
     "brace-style": [2, "1tbs", { "allowSingleLine": true }],
-    "camelcase": [2, { "properties": "always" }],
+    "camelcase": [0, { "properties": "always" }],
     "comma-dangle": [2, "never"],
     "comma-spacing": [2, { "before": false, "after": true }],
     "comma-style": [2, "last"],
@@ -51,7 +51,7 @@
     "generator-star-spacing": [2, "both"],
     "guard-for-in": 0,
     "handle-callback-err": [2, "^(err|error|anySpecificError)$" ],
-    "indent": [2, 4, { "SwitchCase": 1 }],
+    "indent": [0, 4, { "SwitchCase": 1 }],
     "key-spacing": [2, { "beforeColon": false, "afterColon": true }],
     "linebreak-style": 0,
     "max-depth": 0,
