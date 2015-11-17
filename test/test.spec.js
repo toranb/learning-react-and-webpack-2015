@@ -2,12 +2,12 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import HelloWorld from '../src/hello.jsx';
 import { render } from 'react-dom';
-import { Simulate } from 'react-addons-test-utils';
+import click from './click';
 import execSteps from './execSteps';
 import Routes from '../src/routes.jsx';
 import { Router } from 'react-router';
 
-var component, node, click = Simulate.click;
+var component, node;
 
 describe('Given an instance of the Component', () => {
     describe('when we render the component', () => {
@@ -29,11 +29,16 @@ describe('Given an instance of the Component', () => {
                 function () {
                     var users = node.querySelector('a');
                     expect(users.getAttribute('href')).eql('#/users');
-                    click(users, { button: 0 });
+                    click(users);
                 },
                 function () {
                     var user = node.querySelector('li:first-child a');
                     expect(user.getAttribute('href')).eql('#/users/1');
+                    click(user);
+                },
+                function () {
+                    // var activity = node.querySelector('.activity-log');
+                    expect(1).eql(1);
                 }
             ];
             var execNextStep = execSteps(steps, done);
