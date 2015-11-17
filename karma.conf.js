@@ -1,32 +1,35 @@
 var webpackConfig = require('./webpack.config');
-webpackConfig.devtool = 'inline-source-map';
 
 module.exports = function (config) {
   config.set({
-    browsers: [ 'PhantomJS' ],
+    browsers: [ 'Chrome' ],
     singleRun: true,
     frameworks: [ 'mocha', 'chai', 'sinon', 'sinon-chai' ],
     files: [
       'tests.webpack.js'
     ],
     plugins: [
-      'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
       'karma-chai',
       'karma-mocha',
-      'karma-sourcemap-loader',
       'karma-webpack',
       'karma-mocha-reporter',
       'karma-sinon',
       'karma-sinon-chai'
     ],
     preprocessors: {
-      'tests.webpack.js': [ 'webpack', 'sourcemap' ]
+      'tests.webpack.js': [ 'webpack' ]
     },
     reporters: [ 'mocha' ],
     webpack: webpackConfig,
     webpackServer: {
       noInfo: true
     },
-    autoWatch: true
+    autoWatch: true,
+    client: {
+        mocha: {
+            timeout: 20000
+        }
+    }
   });
 };
