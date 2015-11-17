@@ -3,7 +3,9 @@ import TestUtils from 'react-addons-test-utils';
 import HelloWorld from '../src/hello.jsx';
 import { render } from 'react-dom';
 import { Simulate } from 'react-addons-test-utils';
-import Routes from '../src/router.jsx';
+import execSteps from './execSteps';
+import Routes from '../src/routes.jsx';
+import { Router } from 'react-router';
 
 var component, node, click = Simulate.click;
 
@@ -22,16 +24,25 @@ describe('Given an instance of the Component', () => {
         before(() => {
             node = document.createElement('div');
         });
-        it('should render person details when clicking through from users', () => {
-            render((
-                Routes
-            ), node, function () {
-                var a = node.querySelector('a');
-                expect(a.getAttribute('href')).eql('#/users');
-                click(a);
-                var user = node.querySelector('a');
-                expect(user.getAttribute('href')).eql('#/users/1');
-            });
+        it('should render person details when clicking through from users', (done) => {
+            var steps = [
+                function () {
+                    var users = node.querySelector('a');
+                    expect(users.getAttribute('href')).eql('#/users');
+                    click(users);
+                },
+                function () {
+                    var user = node.querySelector('li:first-child a');
+                    expect(user.getAttribute('href')).eql('#/users/1');
+                }
+            ];
+            var execNextStep = execSteps(steps, done);
+            var Route = (
+                <Router onUpdate={execNextStep}>
+                    {Routes}
+                </Router>
+            );
+            render((Route), node, execNextStep);
         });
     });
 });
