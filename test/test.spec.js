@@ -29,7 +29,7 @@ describe('Given an instance of the Component', () => {
                 function () {
                     var users = node.querySelector('a');
                     expect(users.getAttribute('href')).eql('#/users');
-                    click(users);
+                    click(users, { button: 0 });
                 },
                 function () {
                     var user = node.querySelector('li:first-child a');
