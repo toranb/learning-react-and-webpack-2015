@@ -1,21 +1,11 @@
 import React from 'react';
-import { Router, Route, IndexRoute } from 'react-router';
-import App from './app';
-import Users from './users';
-import User from './user';
-import Home from './home';
-import NoMatch from './nomatch';
+import Routes from './routes';
+import { Router } from 'react-router';
 
-var Routes = (
+var Route = (
   <Router>
-    <Route path="/" component={App}>
-      <IndexRoute component={Home}/>
-      <Route path="users" component={Users}>
-        <Route path=":userId" component={User}/>
-      </Route>
-      <Route path="*" component={NoMatch}/>
-    </Route>
+    {Routes}
   </Router>
 );
 
-export default Routes;
+export default Route;
