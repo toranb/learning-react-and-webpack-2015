@@ -17,7 +17,7 @@ function execSteps(steps, done) {
     };
 };
 
-//determine how to call done but fail when an error is thrown
-//how can we "not" update the url (for watch based tdd)
+// determine how to call done but fail when an error is thrown
+// how can we "not" update the url (for watch based tdd)
 
 export default execSteps;
