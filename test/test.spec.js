@@ -47,7 +47,7 @@ describe('Given an instance of the Component', () => {
             ];
             var execNextStep = execSteps(steps, done);
             var Route = (
-                <Router onUpdate={execNextStep} history={createHistory('/')}>
+                <Router onUpdate={execNextStep} history={createHistory()}>
                     {Routes}
                 </Router>
             );
@@ -73,7 +73,7 @@ describe('Given an instance of the Component', () => {
             ];
             var execNextStep = execSteps(steps, done);
             var Route = (
-                <Router onUpdate={execNextStep} history={createHistory('/')}>
+                <Router onUpdate={execNextStep} history={createHistory()}>
                     {Routes}
                 </Router>
             );

@@ -4,7 +4,7 @@ import { Router } from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 
 var Route = (
-  <Router history={createBrowserHistory('/')}>
+  <Router history={createBrowserHistory()}>
     {Routes}
   </Router>
 );
