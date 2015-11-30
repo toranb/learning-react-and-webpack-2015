@@ -6,6 +6,7 @@ import click from './click';
 import execSteps from './execSteps';
 import Routes from '../src/routes.jsx';
 import { Router } from 'react-router';
+import { createMemoryHistory as createHistory } from 'history';
 
 var component, node;
 
@@ -21,14 +22,8 @@ describe('Given an instance of the Component', () => {
     });
 
     describe('when we render the application', () => {
-        beforeEach(function(done) {
+        beforeEach(function() {
             node = document.createElement('div');
-            if (window.location.hash !== '') {
-                window.location.hash = '';
-                setTimeout(done, 10);
-            } else {
-                done();
-            }
         });
         afterEach(function() {
             unmountComponentAtNode(node);
@@ -37,12 +32,12 @@ describe('Given an instance of the Component', () => {
             var steps = [
                 function () {
                     var users = node.querySelector('a');
-                    expect(users.getAttribute('href')).eql('#/users');
+                    expect(users.getAttribute('href')).eql('/users');
                     click(users);
                 },
                 function () {
                     var user = node.querySelector('li:first-child a');
-                    expect(user.getAttribute('href')).eql('#/users/1');
+                    expect(user.getAttribute('href')).eql('/users/1');
                     click(user);
                 },
                 function () {
@@ -52,7 +47,7 @@ describe('Given an instance of the Component', () => {
             ];
             var execNextStep = execSteps(steps, done);
             var Route = (
-                <Router onUpdate={execNextStep}>
+                <Router onUpdate={execNextStep} history={createHistory('/')}>
                     {Routes}
                 </Router>
             );
@@ -63,12 +58,12 @@ describe('Given an instance of the Component', () => {
             var steps = [
                 function () {
                     var users = node.querySelector('a');
-                    expect(users.getAttribute('href')).eql('#/users');
+                    expect(users.getAttribute('href')).eql('/users');
                     click(users);
                 },
                 function () {
                     var user = node.querySelector('li:first-child a');
-                    expect(user.getAttribute('href')).eql('#/users/1');
+                    expect(user.getAttribute('href')).eql('/users/1');
                     click(user);
                 },
                 function () {
@@ -78,7 +73,7 @@ describe('Given an instance of the Component', () => {
             ];
             var execNextStep = execSteps(steps, done);
             var Route = (
-                <Router onUpdate={execNextStep}>
+                <Router onUpdate={execNextStep} history={createHistory('/')}>
                     {Routes}
                 </Router>
             );
