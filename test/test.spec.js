@@ -1,12 +1,9 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import HelloWorld from '../src/hello.jsx';
-import { render, unmountComponentAtNode } from 'react-dom';
+import { unmountComponentAtNode } from 'react-dom';
 import click from './click';
-import execSteps from './execSteps';
-import Routes from '../src/routes.jsx';
-import { Router } from 'react-router';
-import { createMemoryHistory as createHistory } from 'history';
+import render from './render';
 
 var component, node;
 
@@ -45,13 +42,7 @@ describe('Given an instance of the Component', () => {
                     expect(1).eql(1);
                 }
             ];
-            var execNextStep = execSteps(steps, done);
-            var Route = (
-                <Router onUpdate={execNextStep} history={createHistory()}>
-                    {Routes}
-                </Router>
-            );
-            render((Route), node, execNextStep);
+            render(node, steps, done);
         });
         // copy pasted
         it('also it will render person details when clicking through from users', (done) => {
@@ -71,13 +62,7 @@ describe('Given an instance of the Component', () => {
                     expect(1).eql(1);
                 }
             ];
-            var execNextStep = execSteps(steps, done);
-            var Route = (
-                <Router onUpdate={execNextStep} history={createHistory()}>
-                    {Routes}
-                </Router>
-            );
-            render((Route), node, execNextStep);
+            render(node, steps, done);
         });
     });
 });
