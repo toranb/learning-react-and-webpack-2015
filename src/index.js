@@ -1,6 +1,6 @@
 import { render } from 'react-dom';
-import Routes from './router';
+import Router from './router';
 
 render((
-    Routes
+    Router
 ), document.querySelector('#container'));
