@@ -14,7 +14,6 @@ class App extends React.Component {
     }
 };
 
-// must opt-in for the store (coming down from the provider)
 App.contextTypes = {
     store: React.PropTypes.object
 };

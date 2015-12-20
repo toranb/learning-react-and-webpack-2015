@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { fetchUsers } from './actions';
 
 class Users extends React.Component {
     componentDidMount() {
@@ -7,13 +8,16 @@ class Users extends React.Component {
         this.unsubscribe = store.subscribe(() => {
             this.forceUpdate();
         });
+        const people = store.getState().people;
+        store.dispatch(fetchUsers(people));
     }
 
     componentWillUnmount() {
-        this.unsubscribe;
+        this.unsubscribe();
     }
 
     render() {
+        // this is called 2x because I'm not using async props
         const { store } = this.context;
         const people = store.getState().people;
         let links = people.map(function(person) {
@@ -28,7 +32,6 @@ class Users extends React.Component {
     }
 };
 
-// must opt-in for the store (coming down from the provider)
 Users.contextTypes = {
     store: React.PropTypes.object
 };
