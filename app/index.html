@@ -5,6 +5,18 @@
   <title>React and webpack</title>
 </head>
 <body>
+  <script src="jquery.min.js"></script>
+  <script src="fauxjax.min.js"></script>
+  <script>
+    var request = { url: "/api/users" , method: "GET" };
+    $.fauxjax.new({
+        request: request,
+        response: {
+            status: 200,
+            content: [{id: 1, name: 'Toran'}, {id: 2, name: 'Jarrod'}, {id: 3, name: 'Brandon'}]
+        }
+    });
+  </script>
   <div id="container"></div>
   <script src="app.js"></script>
 </body>
