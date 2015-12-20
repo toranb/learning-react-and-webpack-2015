@@ -6,8 +6,7 @@ const initialState = {
 
 export default function(state=initialState, action) {
     if (action.type === ActionTypes.RECEIVE_USERS) {
-        let xhrPeople = state.people.concat(action.response);
-        return {people: xhrPeople};
+        return {people: action.response};
     }
     if (action.type === ActionTypes.ADD_USER) {
         let newPeople = state.people.concat([{id: action.id, name: 'wat'}]);

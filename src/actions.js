@@ -1,3 +1,5 @@
+import { uniq } from './array';
+
 export const ActionTypes = {
     ADD_USER: 'ADD_USER',
     RECEIVE_USERS: 'RECEIVE_USERS'
@@ -7,7 +9,7 @@ function receiveUsers(users, response) {
     return {
         type: ActionTypes.RECEIVE_USERS,
         users: users,
-        response: response
+        response: uniq(users, response)
     };
 }
 
