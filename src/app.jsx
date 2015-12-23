@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { ActionTypes } from './actions';
 
 class App extends React.Component {
@@ -18,4 +17,4 @@ App.contextTypes = {
     store: React.PropTypes.object
 };
 
-export default connect(state => state)(App);
+export default App;
