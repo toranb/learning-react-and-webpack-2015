@@ -13,6 +13,12 @@ function receiveUsers(users, response) {
     };
 }
 
+export function addUser(id) {
+    return dispatch => {
+        return $.ajax({url: '/api/users', method: 'POST'}).then(response => dispatch({type: ActionTypes.ADD_USER, id: id}));
+    };
+}
+
 export function fetchUsers(users) {
     return dispatch => {
         return $.ajax({url: '/api/users'}).then(response => dispatch(receiveUsers(users, response)));

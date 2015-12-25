@@ -8,12 +8,18 @@
   <script src="jquery.min.js"></script>
   <script src="fauxjax.min.js"></script>
   <script>
-    var request = { url: "/api/users" , method: "GET" };
     $.fauxjax.new({
-        request: request,
+      request: {url: "/api/users", method: "GET"},
         response: {
             status: 200,
             content: [{id: 1, name: 'Toran'}, {id: 2, name: 'Jarrod'}, {id: 3, name: 'Brandon'}]
+        }
+    });
+    $.fauxjax.new({
+      request: {url: "/api/users", method: "POST"},
+        response: {
+            status: 201,
+            content: {id: 4}
         }
     });
   </script>

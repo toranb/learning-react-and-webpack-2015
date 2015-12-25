@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { fetchUsers } from './actions';
 import { connect } from 'react-redux';
+import { addUser, fetchUsers } from './actions';
 
 class Users extends React.Component {
     componentWillMount() {
@@ -17,6 +17,7 @@ class Users extends React.Component {
             <div>
                 <ul>{links}</ul>
                 <div>{this.props.children}</div>
+                <button onClick={() => { this.props.addUser(4); }}>Add User</button>
             </div>
         );
     }
@@ -26,6 +27,4 @@ function mapStateToProps(state) {
     return { people: state.people };
 }
 
-export default connect(mapStateToProps, {
-    fetchUsers
-})(Users);
+export default connect(mapStateToProps, {fetchUsers, addUser})(Users);
