@@ -6,6 +6,8 @@ module.exports = function (config) {
     singleRun: true,
     frameworks: [ 'mocha', 'chai', 'sinon', 'sinon-chai' ],
     files: [
+      'app/jquery.min.js',
+      'app/fauxjax.min.js',
       'tests.webpack.js'
     ],
     plugins: [

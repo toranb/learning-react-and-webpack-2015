@@ -5,10 +5,15 @@ import Routes from '../src/routes';
 import execSteps from './execSteps';
 import { createMemoryHistory as createHistory } from 'history';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import reducers from '../src/reducers';
+import thunk from 'redux-thunk';
 
-const store = createStore(reducers);
+const createStoreWithMiddleware = applyMiddleware(
+      thunk
+)(createStore);
+
+const store = createStoreWithMiddleware(reducers);
 
 // can this instead be the base it (pulling in done/etc)
 export default function(node, steps, done) {
